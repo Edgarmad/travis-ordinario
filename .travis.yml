@@ -1,0 +1,8 @@
+language: java
+jdk: oraclejdk11
+
+services:
+ -mysql
+
+after_success: echo "I´m done"
+after_success: mysql -v
