@@ -18,7 +18,7 @@ import org.dbunit.dataset.xml.FlatXmlDataSetBuilder;
 import org.dbunit.operation.DatabaseOperation;
 import org.junit.Before;
 
-public class AlumnoDbTest2 extends DBTestCase {
+public class AlumnoDbTest extends DBTestCase {
     
     public String URL="jdbc:mysql://localhost:3306/calidad2"+ "?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
     public AlumnoDbTest2(String name){
@@ -73,7 +73,6 @@ public class AlumnoDbTest2 extends DBTestCase {
         Alumno a = new Alumno("10","Carlos","Peralta",22,79.7f);
         Alumnos dao= new Alumnos();
         dao.addAlumno(a);
-        
         assertEquals(1,conn.getRowCount("alumno2"));
         conn.close();
         
@@ -86,21 +85,10 @@ public class AlumnoDbTest2 extends DBTestCase {
         dao.removeAlumno("Raul", "Peralta");
         IDataSet databaseDataSet = getConnection().createDataSet();
         ITable actualTable = databaseDataSet.getTable("alumno2");
-
-        // Load expected data from an XML dataset
         IDataSet expectedDataSet = new FlatXmlDataSetBuilder().build(new File("Empty.xml"));
         ITable expectedTable = expectedDataSet.getTable("Empty");
-
-        // Assert actual database table match expected table
         Assertion.assertEquals(expectedTable, actualTable);
         conn.close();
-//        IDatabaseConnection conn = getConnection();
-//        Alumno a = new Alumno("12","Raul","Peralta",22,79.7f);
-//        Alumnos dao= new Alumnos();
-//        dao.removeAlumno("Raul", "Peralta");
-//        
-//        assertEquals(1,conn.getRowCount("alumno2"));
-//        conn.close();   
     }
     @Test
     public void updateTest()throws Exception{
@@ -110,21 +98,10 @@ public class AlumnoDbTest2 extends DBTestCase {
         dao.updateAlumnoPromedio(a, 85.9f);
         IDataSet databaseDataSet = getConnection().createDataSet();
         ITable actualTable = databaseDataSet.getTable("alumno2");
-
-        // Load expected data from an XML dataset
         IDataSet expectedDataSet = new FlatXmlDataSetBuilder().build(new File("Update.xml"));
         ITable expectedTable = expectedDataSet.getTable("Empty");
-
-        // Assert actual database table match expected table
         Assertion.assertEquals(expectedTable, actualTable);
         conn.close();
-//        IDatabaseConnection conn = getConnection();
-//        Alumno a = new Alumno("13","Majo","Perez",22,79.7f);
-//        Alumnos dao= new Alumnos();
-//        dao.updateAlumnoPromedio(a, 85.9f);
-//        
-//        assertEquals(2,conn.getRowCount("alumno2"));
-//        conn.close();   
     }
     @Test
     public void getTest()throws Exception{
@@ -134,22 +111,10 @@ public class AlumnoDbTest2 extends DBTestCase {
         dao.getAlumno("15");
         IDataSet databaseDataSet = getConnection().createDataSet();
         ITable actualTable = databaseDataSet.getTable("alumno2");
-
-        // Load expected data from an XML dataset
         IDataSet expectedDataSet = new FlatXmlDataSetBuilder().build(new File("Update.xml"));
         ITable expectedTable = expectedDataSet.getTable("Empty");
-
-        // Assert actual database table match expected table
         Assertion.assertEquals(expectedTable, actualTable);
         conn.close();
-        
-//        IDatabaseConnection conn = getConnection();
-//        Alumno a = new Alumno("15","Carla","Pera",20,79.7f);
-//        AlumnoDAO dao= new Alumnos();
-//        dao.getAlumno("15");
-//        
-//        assertEquals(1,conn.getRowCount("alumno2"));
-//        conn.close();   
     }
     
     
