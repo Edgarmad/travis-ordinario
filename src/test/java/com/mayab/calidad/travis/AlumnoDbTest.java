@@ -40,7 +40,7 @@ public class AlumnoDbTest extends DBTestCase {
     }
 
     
-    public AlumnoDbTest2() {
+    public AlumnoDbTest() {
     }
 
     @Override
