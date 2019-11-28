@@ -1,4 +1,4 @@
-package com.mayab.calidad.funcionales;
+package com.mayab.calidad.travis;
 
 import org.junit.After;
 import org.junit.Test;
