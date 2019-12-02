@@ -10,6 +10,7 @@ before_install:
  - sudo mysql -e 'SHOW DATABASES;'
  - sudo mysql -e 'USE calidad2;'
  - sudo mysql -e 'select database();'
+ - sudo mysql -e 'show tables;'
  - sudo mysql --version
 
 after_success: echo "I´m done"
