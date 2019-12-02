@@ -25,10 +25,10 @@ public class AlumnoDbTest extends DBTestCase {
         super(name);
         System.setProperty(PropertiesBasedJdbcDatabaseTester.DBUNIT_DRIVER_CLASS, "com.mysql.jdbc.Driver");
         System.setProperty(PropertiesBasedJdbcDatabaseTester.DBUNIT_CONNECTION_URL, URL);
-        System.setProperty(PropertiesBasedJdbcDatabaseTester.DBUNIT_USERNAME, "calidaduser");
-        System.setProperty(PropertiesBasedJdbcDatabaseTester.DBUNIT_PASSWORD, "FoXterr1er");
+        System.setProperty(PropertiesBasedJdbcDatabaseTester.DBUNIT_USERNAME, "root");
+        System.setProperty(PropertiesBasedJdbcDatabaseTester.DBUNIT_PASSWORD, "mydb");
             try{
-                Connection con= DriverManager.getConnection(URL, "calidaduser", "FoXterr1er");
+                Connection con= DriverManager.getConnection(URL, "root", "mydb");
                 Statement st;
                 st= con.createStatement();
                 int isEx = st.executeUpdate("INSERT INTO alumno2(alumno_name,alumno_LastNameP,age,average) VALUES" +"('Alex','Diaz',19,8.7);");
