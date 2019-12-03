@@ -1,10 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-
 <dataset>
-    <Alumno2 alumno_id="13" alumno_name="Majo" alumno_LastNameP="Perez" age="22" average="85.9"/>
+    <alumno2 alumno_id="13" alumno_name="Majo" alumno_LastNameP="Perez" age="22" average="85.9"/>
 </dataset>
