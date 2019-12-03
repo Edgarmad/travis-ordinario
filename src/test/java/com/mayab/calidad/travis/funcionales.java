@@ -12,6 +12,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import static org.junit.Assert.assertThat;
 import org.junit.FixMethodOrder;
 import org.junit.runners.MethodSorters;
+import java.util.concurrent.TimeUnit;
 
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
