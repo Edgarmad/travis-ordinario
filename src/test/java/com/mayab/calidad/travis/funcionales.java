@@ -28,7 +28,6 @@ public class funcionales{
       URL="https://mern-crud.herokuapp.com/";
       System.setProperty("webdriver.chrome.driver", "/usr/bin/chromedriver");
       driver = new ChromeDriver();
-      driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     
   }
     public void pause(long mills){
