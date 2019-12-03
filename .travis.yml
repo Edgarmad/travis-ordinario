@@ -2,9 +2,21 @@ language: java
 jdk: oraclejdk11
 
 services:
+ - xvfb
  - mysql
  
 before_install:
+ - sudo apt-get update
+ - sudo apt-get install dbus-x11
+ - export DISPLAY=:99.0
+ - sleep 3
+ - export CHROME_BIN=/usr/bin/google-chrome
+ - sudo apt-get install -y libappindicator1 fonts-liberation
+ - wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+ - sudo dpkg -i google-chrome*.deb
+ - wget https://chromedriver.storage.googleapis.com/2.38/chromedriver_linux64.zip
+ - unzip chromedriver_linux64.zip
+ - sudo cp chromedriver /usr/bin
  - sudo mysql -e 'CREATE DATABASE IF NOT EXISTS calidad;'
  - sudo mysql -e 'CREATE TABLE IF NOT EXISTS calidad.alumno(alumno_id INTEGER UNSIGNED PRIMARY KEY AUTO_INCREMENT,alumno_name VARCHAR(20),alumno_LastNameP VARCHAR(20),age TINYINT(3)UNSIGNED,average float);'
  - sudo mysql --version
@@ -12,11 +24,15 @@ before_install:
 script: 
  - mvn clean
  - mvn test
- - mvn surefire:test -Dtest=AlumnoDbTest
+ - mvn surefire:test -Dtest=dbunit
+ - mvn surefire:test -Dtest=funcionales
 
 mysql:
  database: calidad
  username: root
  encoding: utf8
   
-after_success: echo "Pruebas completas"
+after_success: 
+- echo "Pruebas completas"
+- mysql -e 'SHOW DATABASES;'
+- mysql -e 'USE DBUnit; SHOW TABLES;'
