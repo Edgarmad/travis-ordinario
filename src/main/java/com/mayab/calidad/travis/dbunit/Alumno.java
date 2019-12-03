@@ -1,11 +1,11 @@
 package com.mayab.calidad.travis.dbunit;
 public class Alumno {
 	//Atributos
-	private String id;
-	private String name;
-	private String lastName;
-	private Integer age;
-	private Float average;
+	public String id;
+	public String name;
+	public String lastName;
+	public Integer age;
+	public Float average;
 	//Constructores
 	Alumno(){
 		this.id="";
