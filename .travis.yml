@@ -22,8 +22,6 @@ before_install:
  - sudo mysql --version
  
 script: 
- - mvn clean
- - mvn test
  - mvn surefire:test -Dtest=dbunit
  - mvn surefire:test -Dtest=funcionales
   
