@@ -26,11 +26,6 @@ script:
  - mvn test
  - mvn surefire:test -Dtest=dbunit
  - mvn surefire:test -Dtest=funcionales
-
-mysql:
- database: calidad
- username: root
- encoding: utf8
   
 after_success: 
 - echo "Pruebas completas"
