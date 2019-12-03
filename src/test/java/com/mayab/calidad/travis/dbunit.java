@@ -20,7 +20,7 @@ import org.junit.Before;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class AlumnoDbTest extends DBTestCase {
+public class dbunit extends DBTestCase {
     
     public String URL="jdbc:mysql://localhost:3306/calidad"+ "?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
     public AlumnoDbTest(String name){
@@ -41,7 +41,7 @@ public class AlumnoDbTest extends DBTestCase {
     }
 
     
-    public AlumnoDbTest() {
+    public dbunit() {
     }
 
     @Override
