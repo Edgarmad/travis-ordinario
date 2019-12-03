@@ -1,4 +1,4 @@
-package com.mayab.calidad.travis.funcionales;
+package com.mayab.calidad.travis.dbunit;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

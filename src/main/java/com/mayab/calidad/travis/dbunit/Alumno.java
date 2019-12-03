@@ -1,4 +1,4 @@
-package com.mayab.calidad.travis.funcionales;
+package com.mayab.calidad.travis.dbunit;
 public class Alumno {
 	//Atributos
 	private String id;
