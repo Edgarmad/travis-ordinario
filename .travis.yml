@@ -20,18 +20,7 @@ before_install:
  - sudo mysql -e 'CREATE DATABASE IF NOT EXISTS calidad;'
  - sudo mysql -e 'CREATE TABLE IF NOT EXISTS calidad.alumno(alumno_id INTEGER UNSIGNED PRIMARY KEY AUTO_INCREMENT,alumno_name VARCHAR(20),alumno_LastNameP VARCHAR(20),age TINYINT(3)UNSIGNED,average float);'
  - sudo mysql --version
- 
-script: 
- - mvn clean
- - mvn test
- - mvn surefire:test -Dtest=dbunit
- - mvn surefire:test -Dtest=funcionales
 
-mysql:
- database: calidad
- username: root
- encoding: utf8
-  
 after_success: 
 - echo "Pruebas completas"
 - mysql -e 'SHOW DATABASES;'
