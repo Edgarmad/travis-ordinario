@@ -25,7 +25,7 @@ public class funcionales{
   @Before
   public void init() throws Exception {
       URL="https://mern-crud.herokuapp.com/";
-      System.setProperty("webdriver.chrome.driver", "/usr/bin/chromedriver);
+      System.setProperty("webdriver.chrome.driver", "/usr/bin/chromedriver");
       driver = new ChromeDriver();
     //driver.manage().timeouts().implicitlyWait(30, TimeUnit
     
