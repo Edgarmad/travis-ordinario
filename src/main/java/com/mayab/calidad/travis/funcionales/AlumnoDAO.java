@@ -1,4 +1,4 @@
-package com.mayab.calidad.travis;
+package com.mayab.calidad.travis.funcionales;
 public interface AlumnoDAO {
 	public void addAlumno(Alumno alumno);
 	public void removeAlumno(String Alumno, String lastName);
