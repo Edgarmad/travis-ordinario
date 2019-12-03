@@ -1,4 +1,4 @@
-package com.mayab.calidad.travis;
+package com.mayab.calidad.travis.dbunit;
 
 import java.io.File;
 import java.io.InputStream;

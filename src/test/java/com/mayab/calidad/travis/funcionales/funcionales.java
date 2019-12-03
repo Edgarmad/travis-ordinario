@@ -1,5 +1,7 @@
-package com.mayab.calidad.travis;
-
+package com.mayab.calidad.travis.funcionales;
+import com.mayab.calidad.travis.funcionales.Alumno;
+import com.mayab.calidad.travis.funcionales.AlumnoDAO;
+import com.mayab.calidad.travis.funcionales.Alumnos;
 import org.junit.After;
 import org.junit.Test;
 import static org.junit.Assert.*;
