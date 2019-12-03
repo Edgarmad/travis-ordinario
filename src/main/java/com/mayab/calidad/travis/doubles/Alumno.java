@@ -1,4 +1,4 @@
-package com.mayab.calidad.travis.dbunit;
+package com.mayab.calidad.travis.doubles;
 public class Alumno {
 	//Atributos
 	public String id;

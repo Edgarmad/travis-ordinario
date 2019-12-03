@@ -20,6 +20,7 @@ before_install:
  - sudo mysql --version
  
 script: 
+ - mvn surefire:test -Dtest=doubles
  - mvn surefire:test -Dtest=dbunit
  - mvn surefire:test -Dtest=funcionales
   
