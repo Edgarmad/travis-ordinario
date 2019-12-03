@@ -17,26 +17,27 @@ import org.dbunit.dataset.ITable;
 import org.dbunit.dataset.xml.FlatXmlDataSetBuilder;
 import org.dbunit.operation.DatabaseOperation;
 import org.junit.Before;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class AlumnoDbTest extends DBTestCase {
     
-    public String URL="jdbc:mysql://localhost:3306/calidad2"+ "?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+    public String URL="jdbc:mysql://localhost:3306/calidad"+ "?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
     public AlumnoDbTest(String name){
         super(name);
         System.setProperty(PropertiesBasedJdbcDatabaseTester.DBUNIT_DRIVER_CLASS, "com.mysql.jdbc.Driver");
         System.setProperty(PropertiesBasedJdbcDatabaseTester.DBUNIT_CONNECTION_URL, URL);
         System.setProperty(PropertiesBasedJdbcDatabaseTester.DBUNIT_USERNAME, "root");
         System.setProperty(PropertiesBasedJdbcDatabaseTester.DBUNIT_PASSWORD, "");
-            try{
+                    try{
                 Connection con= DriverManager.getConnection(URL, "root", "");
                 Statement st;
                 st= con.createStatement();
-                int isEx = st.executeUpdate("INSERT INTO alumno2(alumno_name,alumno_LastNameP,age,average) VALUES" +"('Alex','Diaz',19,8.7);");
+                int isEx = st.executeUpdate("INSERT INTO alumno(alumno_name,alumno_LastNameP,age,average) VALUES" +"('Alex','Diaz',19,8.7);");
                 con.close(); 
             }catch (Exception e){
                 e.printStackTrace();
             }
-
     }
 
     
@@ -46,7 +47,7 @@ public class AlumnoDbTest extends DBTestCase {
     @Override
     protected IDataSet getDataSet() throws Exception {
         
-        InputStream xmlFile= getClass().getResourceAsStream("/Empty.xml");
+        InputStream xmlFile= getClass().getResourceAsStream("/data.xml");
         
         return new FlatXmlDataSetBuilder().build(xmlFile);
         
@@ -61,58 +62,53 @@ public class AlumnoDbTest extends DBTestCase {
             conn.close();
         }
     }
+
     @Test
-    public void test1() throws Exception {
-        IDatabaseConnection conn = getConnection();
-        assertEquals(0, conn.getRowCount("alumno2"));
-        conn.close();
-    }
-    @Test
-    public void insertTest()throws Exception{
+    public void testInsert()throws Exception{
         IDatabaseConnection conn = getConnection();
         Alumno a = new Alumno("10","Carlos","Peralta",22,79.7f);
         Alumnos dao= new Alumnos();
         dao.addAlumno(a);
-        assertEquals(1,conn.getRowCount("alumno2"));
+        assertEquals(4,conn.getRowCount("alumno"));
         conn.close();
-        
     }
     @Test
-    public void removeTest()throws Exception{
+    public void testRemove()throws Exception{
         IDatabaseConnection conn = getConnection();
         Alumno a = new Alumno("12","Raul","Peralta",22,79.7f);
         Alumnos dao= new Alumnos();
         dao.removeAlumno("Raul", "Peralta");
-        IDataSet databaseDataSet = getConnection().createDataSet();
-        ITable actualTable = databaseDataSet.getTable("alumno2");
-        IDataSet expectedDataSet = new FlatXmlDataSetBuilder().build(new File("Empty.xml"));
-        ITable expectedTable = expectedDataSet.getTable("Empty");
-        Assertion.assertEquals(expectedTable, actualTable);
+	assertEquals(3,conn.getRowCount("alumno"));
         conn.close();
     }
     @Test
-    public void updateTest()throws Exception{
-        IDatabaseConnection conn = getConnection();
-        Alumno a = new Alumno("13","Majo","Perez",22,79.7f);
-       Alumnos dao= new Alumnos();
-        dao.updateAlumnoPromedio(a, 85.9f);
-        IDataSet databaseDataSet = getConnection().createDataSet();
-        ITable actualTable = databaseDataSet.getTable("alumno2");
-        IDataSet expectedDataSet = new FlatXmlDataSetBuilder().build(new File("Update.xml"));
-        ITable expectedTable = expectedDataSet.getTable("Empty");
+    public void testUpdate()throws Exception{
+	try
+	{
+           Connection con= DriverManager.getConnection(URL, "root", "");
+           Statement st;
+           st= con.createStatement();
+           int isEx = st.executeUpdate("UPDATE alumno set average = 9.9 where alumno_id = 1");
+           con.close();
+        }catch (Exception e)
+		{
+           e.printStackTrace();
+        }
+	IDataSet databaseDataSet = getConnection().createDataSet();
+	ITable actualTable = databaseDataSet.getTable("alumno");
+	InputStream xmlFile = getClass().getResourceAsStream("/updatea.xml");
+        IDataSet expectedDataSet = new FlatXmlDataSetBuilder().build(xmlFile);
+	ITable expectedTable = expectedDataSet.getTable("alumno");
         Assertion.assertEquals(expectedTable, actualTable);
-        conn.close();
     }
     @Test
-    public void getTest()throws Exception{
+    public void testGet()throws Exception{
         IDatabaseConnection conn = getConnection();
-        Alumno a = new Alumno("15","Carla","Pera",20,79.7f);
-        AlumnoDAO dao= new Alumnos();
-        dao.getAlumno("15");
         IDataSet databaseDataSet = getConnection().createDataSet();
-        ITable actualTable = databaseDataSet.getTable("alumno2");
-        IDataSet expectedDataSet = new FlatXmlDataSetBuilder().build(new File("Update.xml"));
-        ITable expectedTable = expectedDataSet.getTable("Empty");
+        ITable actualTable = databaseDataSet.getTable("alumno");
+        InputStream xmlFile = getClass().getResourceAsStream("/data.xml");
+	IDataSet expectedDataSet = new FlatXmlDataSetBuilder().build(xmlFile);
+	ITable expectedTable = expectedDataSet.getTable("alumno");
         Assertion.assertEquals(expectedTable, actualTable);
         conn.close();
     }
