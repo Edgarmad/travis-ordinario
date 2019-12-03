@@ -35,4 +35,5 @@ mysql:
 after_success: 
 - echo "Pruebas completas"
 - mysql -e 'SHOW DATABASES;'
-- mysql -e 'USE DBUnit; SHOW TABLES;'
+- mysql -e 'USE calidad;'
+- mysql -e 'SHOW TABLES;'
