@@ -1,11 +1,11 @@
-package com.mayab.calidad.travis.funcionales;
+package com.mayab.calidad.travis;
 public class Alumno {
 	//Atributos
-	public String id;
-	public String name;
-	public String lastName;
-	public Integer age;
-	public Float average;
+	private String id;
+	private String name;
+	private String lastName;
+	private Integer age;
+	private Float average;
 	//Constructores
 	Alumno(){
 		this.id="";

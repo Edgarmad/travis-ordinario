@@ -1,7 +1,4 @@
 package com.mayab.calidad.travis.dbunit;
-import com.mayab.calidad.travis.funcionales.Alumno;
-import com.mayab.calidad.travis.funcionales.AlumnoDAO;
-import com.mayab.calidad.travis.funcionales.Alumnos;
 import java.io.File;
 import java.io.InputStream;
 import java.sql.Connection;
