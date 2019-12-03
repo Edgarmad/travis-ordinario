@@ -4,11 +4,15 @@ jdk: oraclejdk11
 services:
  - mysql
 before_install:
- - sudo mysql -e 'select User from mysql.user;'
  - sudo mysql -e 'CREATE DATABASE IF NOT EXISTS calidad2;'
- - sudo mysql -e 'USE calidad2;'
- - sudo mysql -e 'CREATE TABLE IF NOT EXISTS calidad2.Alumno2;'
- - sudo mysql -e 'SHOW DATABASES;'
+ - sudo mysql -e 'CREATE TABLE IF NOT EXISTS calidad2.alumno2(alumno_id INTEGER UNSIGNED PRIMARY KEY AUTO_INCREMENT,alumno_name VARCHAR(20),alumno_LastNameP VARCHAR(20),age TINYINT(3)UNSIGNED,average float);'
  - sudo mysql --version
-
+ script: 
+- mvn clean
+- mvn test
+- mvn surefire:test -Dtest=AlumnoDbTest
+mysql:
+  database: calidad2
+  username: root
+  encoding: utf8
 after_success: echo "Tablas creadas"
