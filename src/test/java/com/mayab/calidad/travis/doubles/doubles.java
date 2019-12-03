@@ -92,26 +92,4 @@ public class doubles{
 		});
 		assertThat(doubles.updateAlumnoPromedio(new Alumno("002", "Ricardo", "Hernan", 21, 10.0f)), is(equalTo("Se actualizo promedio")));
 	}
-	
-	
-	@Test
-	public void testGet() {
-		when(doubles.getAlumno(any(Alumno.class))).thenAnswer(new Answer<String>() {
-			public String answer(InvocationOnMock invocation) throws Throwable {
-				alumnos.put(0, new Alumno("001", "Ed", "Sheeran", 21, 9.1f));
-				Alumno student = alumnos.get(0);
-				String before = student.getName();
-				student.setAverage(9.5f);
-				String after = student.getName();
-				if(before == after) {
-					return "Se obtuvo el alumno";
-				}else {
-					return "No se obtuvo";
-				}
-				
-			}
-			
-		});
-		assertThat(doubles.getAlumno(new Alumno("002", "Ricardo", "Hernan", 21, 10.0f)), is(equalTo("Se obtuvo el alumno")));
-	}
 }
