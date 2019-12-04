@@ -19,8 +19,10 @@ before_install:
  - sudo mysql -e 'CREATE TABLE IF NOT EXISTS calidad.alumno(alumno_id INTEGER UNSIGNED PRIMARY KEY AUTO_INCREMENT,alumno_name VARCHAR(20),alumno_LastNameP VARCHAR(20),age TINYINT(3)UNSIGNED,average float);'
  - sudo mysql --version
  
+
 script: 
- - mvn test
-  
+ - mvn surefire:test -Dtest=doubles
+ - mvn surefire:test -Dtest=dbunit
+ - mvn surefire:test -Dtest=funcionales
 after_success: 
 - echo "Pruebas completas"
