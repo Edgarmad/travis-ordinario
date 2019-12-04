@@ -68,7 +68,7 @@ public class dbunit extends DBTestCase {
         Alumno a = new Alumno("10","Carlos","Peralta",22,79.7f);
         Alumnos dao= new Alumnos();
         dao.addAlumno(a);
-        assertEquals(4,conn.getRowCount("alumno"));
+        assertEquals(1,conn.getRowCount("alumno"));
         conn.close();
     }
     @Test
