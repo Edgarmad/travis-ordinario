@@ -48,7 +48,7 @@ public class doubles{
 				
 			}
 		});
-		assertThat(doubles.addAlumno(new Alumno("001", "Sheeran", "Sheeran", 21, 9.1f)), is(equalTo("Funciono")));
+		assertThat(doubles.addAlumno(new Alumno("001", "Sheeran", "Sheeran", 21, 9.1f)), is(equalTo("No Funciono")));
 	}
 	
 	
