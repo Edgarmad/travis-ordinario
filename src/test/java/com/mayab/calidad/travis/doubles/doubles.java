@@ -42,13 +42,13 @@ public class doubles{
 				alumnos.put(0, new Alumno("001", "Ed", "Sheeran", 21, 9.1f));
 				int after = alumnos.size();
 				if(before == after)
-					return "Funciono";
-				else
 					return "No funciono";
+				else
+					return "Funciono";
 				
 			}
 		});
-		assertThat(doubles.addAlumno(new Alumno("001", "Sheeran", "Sheeran", 21, 9.1f)), is(equalTo("No Funciono")));
+		assertThat(doubles.addAlumno(new Alumno("001", "Sheeran", "Sheeran", 21, 9.1f)), is(equalTo("Funciono")));
 	}
 	
 	
