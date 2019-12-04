@@ -42,13 +42,13 @@ public class doubles{
 				alumnos.put(0, new Alumno("001", "Ed", "Sheeran", 21, 9.1f));
 				int after = alumnos.size();
 				if(before == after)
-					return "No se pudo agregar";
+					return "Funciono";
 				else
-					return "Se agrego alumno";
+					return "No funciono";
 				
 			}
 		});
-		assertThat(doubles.addAlumno(new Alumno("001", "Sheeran", "Sheeran", 21, 9.1f)), is(equalTo("Se agrego alumno")));
+		assertThat(doubles.addAlumno(new Alumno("001", "Sheeran", "Sheeran", 21, 9.1f)), is(equalTo("Funciono")));
 	}
 	
 	
@@ -60,17 +60,17 @@ public class doubles{
 				alumnos.remove(0);
 				int after = alumnos.size();
 				if(after == before - 1) {
-					return "Se elimino alumno";
+					return "Funciono";
 				}
 					
 				else {
-					return "No se pudo eliminar alumno";
+					return "No funciono";
 				}
 					
 			}
 			
 		});
-		assertThat(doubles.removeAlumno(new Alumno("001", "Ed", "Sheeran", 21, 9.1f)), is(equalTo("Se elimino alumno")));
+		assertThat(doubles.removeAlumno(new Alumno("001", "Ed", "Sheeran", 21, 9.1f)), is(equalTo("Funciono")));
 	}
 	@Test
 	public void testUpdate() {
@@ -82,14 +82,14 @@ public class doubles{
 				student.setAverage(9.5f);
 				double after = student.getAverage();
 				if(before != after) {
-					return "Se actualizo promedio";
+					return "Funciono";
 				}else {
-					return "No se pudo actualizar promedio";
+					return "No Funciono";
 				}
 				
 			}
 			
 		});
-		assertThat(doubles.updateAlumnoPromedio(new Alumno("002", "Ricardo", "Hernan", 21, 10.0f)), is(equalTo("Se actualizo promedio")));
+		assertThat(doubles.updateAlumnoPromedio(new Alumno("002", "Ricardo", "Hernan", 21, 10.0f)), is(equalTo("Funciono")));
 	}
 }
